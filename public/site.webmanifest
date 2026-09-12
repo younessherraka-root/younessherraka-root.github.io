@@ -1,0 +1,14 @@
+{
+  "name": "Youness Herraka Portfolio",
+  "short_name": "YH Portfolio",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#0b0b0c",
+  "background_color": "#030509",
+  "display": "standalone"
+}
