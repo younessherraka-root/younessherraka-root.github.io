@@ -324,10 +324,6 @@ function Hero({
   return (
     <section id="home" className="hero-section" aria-labelledby="hero-title">
       <NetworkField />
-      <div className="hero-bg-name" aria-hidden="true">
-        YOUNESS HERRAKA
-      </div>
-
       <div className="hero-content">
         <div className="hero-meta">
           <span className="eyebrow">{t.hero.role}</span>
