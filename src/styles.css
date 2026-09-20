@@ -451,7 +451,7 @@ h3 {
   overflow: hidden;
   display: grid;
   align-items: center;
-  padding: 7.2rem 1rem 4.7rem;
+  padding: 6.4rem 1rem 4.2rem;
   isolation: isolate;
   background:
     linear-gradient(180deg, rgba(238, 246, 255, 0.92), rgba(255, 255, 255, 0.98) 58%, var(--background));
@@ -516,7 +516,7 @@ h3 {
 
 .hero-content {
   width: min(1180px, 100%);
-  min-height: 660px;
+  min-height: 590px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 0.94fr) minmax(320px, 0.72fr);
@@ -555,7 +555,7 @@ h3 {
   grid-row: 2;
   justify-self: end;
   align-self: center;
-  width: min(420px, 34vw);
+  width: min(370px, 31vw);
   aspect-ratio: 0.699;
   position: relative;
   display: grid;
@@ -1843,7 +1843,7 @@ html[data-js-motion="true"] .portrait-stage {
 
 @media (min-width: 680px) {
   h1 {
-    font-size: 4.9rem;
+    font-size: 4.5rem;
   }
 
   h2 {
@@ -1851,7 +1851,7 @@ html[data-js-motion="true"] .portrait-stage {
   }
 
   .hero-bg-name {
-    font-size: 6.9rem;
+    font-size: 6rem;
   }
 
   .section-word {
@@ -1861,7 +1861,7 @@ html[data-js-motion="true"] .portrait-stage {
 
 @media (min-width: 1040px) {
   h1 {
-    font-size: 6.5rem;
+    font-size: 5.4rem;
   }
 
   h2 {
@@ -1869,11 +1869,11 @@ html[data-js-motion="true"] .portrait-stage {
   }
 
   .hero-bg-name {
-    font-size: 11rem;
+    font-size: 9.5rem;
   }
 
   .portrait-stage {
-    width: 410px;
+    width: 370px;
   }
 
   .section-word {
@@ -1883,7 +1883,7 @@ html[data-js-motion="true"] .portrait-stage {
 
 @media (min-width: 1280px) {
   .hero-bg-name {
-    font-size: 12.4rem;
+    font-size: 10.4rem;
   }
 
   h2 {
