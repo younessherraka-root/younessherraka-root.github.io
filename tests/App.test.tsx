@@ -180,7 +180,7 @@ describe('portfolio app', () => {
     expect(screen.getByRole('status', { name: /opening youness herraka portfolio/i })).toBeInTheDocument();
     expect(screen.getByLabelText('Youness Herraka')).toBeInTheDocument();
     expect(screen.getByText('Digital infrastructure portfolio')).toBeInTheDocument();
-    expect(within(screen.getByRole('status')).getByRole('img', { name: /IT servers connected to cloud resources and a DevOps/i })).toBeInTheDocument();
+    expect(within(screen.getByRole('status')).getByRole('img', { name: /Infrastructure and network services connected to cloud resources/i })).toBeInTheDocument();
     expect(document.body).toHaveAttribute('data-intro-playing', 'true');
     expect(document.querySelector('.site-content')).toHaveAttribute('inert');
 
@@ -226,7 +226,7 @@ describe('portfolio app', () => {
 
     expect(screen.getByRole('status', { name: 'Ouverture du portfolio de Youness Herraka' })).toBeInTheDocument();
     expect(screen.getByText('Portfolio infrastructure digitale')).toBeInTheDocument();
-    expect(within(screen.getByRole('status')).getByRole('img', { name: /Serveurs IT connectés/i })).toBeInTheDocument();
+    expect(within(screen.getByRole('status')).getByRole('img', { name: /Infrastructure et services réseau connectés/i })).toBeInTheDocument();
     const enterButton = screen.getByRole('button', { name: 'Accéder au portfolio' });
     expect(enterButton).toHaveFocus();
     expect(enterButton.textContent).toBe('');

@@ -1,5 +1,5 @@
 import { useEffect, useRef, type CSSProperties } from 'react';
-import { Check, ChevronsRight, Cloud, Container, Database, GitBranch, Monitor, Server, Terminal } from 'lucide-react';
+import { Check, ChevronsRight, Cloud, Container, Database, Network, Server, Terminal } from 'lucide-react';
 import { translations, type Language } from './data';
 import { openingAnimationDuration, openingRevealStart } from './hooks';
 import './opening.css';
@@ -7,65 +7,92 @@ import './opening.css';
 function InfrastructureScenes({ label, disciplines }: { label: string; disciplines: readonly string[] }) {
   return (
     <div className="opening-scenes" role="img" aria-label={label}>
-      <svg className="opening-scene-art" viewBox="0 0 840 240" aria-hidden="true" focusable="false">
+      <svg className="opening-scene-art" viewBox="0 0 1000 250" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="opening-flow-gradient" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stopColor="#2563eb" />
+            <stop offset="0.5" stopColor="#0891b2" />
+            <stop offset="1" stopColor="#16a34a" />
+          </linearGradient>
+        </defs>
+
         <g className="scene-connections">
-          <path className="scene-connection-track" d="M214 120H314M520 120H626" />
-          <path className="scene-connection-flow flow-cloud" d="M214 120H314" pathLength="100" />
-          <path className="scene-connection-flow flow-devops" d="M520 120H626" pathLength="100" />
+          <path className="scene-connection-track" d="M185 125H285M415 125H500M650 125H730" pathLength="100" />
+          <path className="scene-connection-line" d="M185 125H285M415 125H500M650 125H730" pathLength="100" />
+          <path className="scene-connection-flow" d="M185 125H285M415 125H500M650 125H730" pathLength="100" />
         </g>
 
-        <g className="scene-it">
-          <path className="scene-plinth" d="M54 194H250M68 200H236" />
-          <path className="scene-local-link" d="M105 146V175H205V149" />
+        <g className="scene-infrastructure" transform="translate(45 65)">
           {[0, 1, 2].map((rack) => (
-            <g transform={`translate(66 ${48 + rack * 35})`} key={rack}>
-              <g className="scene-rack" style={{ '--rack-delay': `${100 + rack * 120}ms` } as CSSProperties}>
-                <rect className="scene-device" width="78" height="28" rx="4" />
-                <Server x="7" y="6" size={16} strokeWidth={1.6} />
-                <path className="scene-vent" d="M33 10H57M33 17H50" />
-                <rect className="scene-led" x="66" y="11" width="5" height="5" rx="1" />
+            <g transform={`translate(0 ${rack * 42})`} key={rack}>
+              <g className="scene-rack" style={{ '--scene-delay': `${180 + rack * 130}ms` } as CSSProperties}>
+                <rect className="scene-rack-shell" width="140" height="34" rx="8" />
+                <Server x="12" y="7" size={20} strokeWidth={1.5} />
+                <path className="scene-rack-vent" d="M46 12H96M46 21H83" />
+                <circle className="scene-led" cx="121" cy="17" r="4" />
               </g>
             </g>
           ))}
-          <g className="scene-workstation">
-            <Monitor x="165" y="93" size={70} strokeWidth={1.2} />
-            <path className="scene-terminal-line" d="M179 115L185 120L179 125M190 125H205" />
+          <path className="scene-floor" d="M-5 140H145" />
+        </g>
+
+        <g transform="translate(285 60)">
+          <g className="scene-network">
+            <circle className="scene-network-ring scene-network-ring-outer" cx="65" cy="65" r="61" />
+            <circle className="scene-network-ring" cx="65" cy="65" r="50" />
+            <circle className="scene-network-core" cx="65" cy="65" r="43" />
+            <Network x="37" y="37" size={56} strokeWidth={1.35} />
+            {[
+              [65, 4],
+              [126, 65],
+              [65, 126],
+              [4, 65],
+            ].map(([cx, cy], index) => (
+              <circle
+                className="scene-network-node"
+                cx={cx}
+                cy={cy}
+                r="5"
+                style={{ '--node-delay': `${620 + index * 100}ms` } as CSSProperties}
+                key={`${cx}-${cy}`}
+              />
+            ))}
           </g>
         </g>
 
-        <g className="scene-cloud">
-          <path className="scene-plinth" d="M327 194H513M341 200H499" />
+        <g className="scene-cloud" transform="translate(500 37)">
           <g className="scene-cloud-symbol">
-            <Cloud x="360" y="23" size={120} strokeWidth={1.15} />
+            <Cloud x="10" y="3" size={130} strokeWidth={1.15} />
           </g>
-          <path className="scene-cloud-branches" d="M420 118V150M370 160V150H470V160M420 150V160" />
-          <g className="scene-cloud-resources">
-            <Container x="357" y="159" size={26} strokeWidth={1.4} />
-            <Database x="407" y="159" size={26} strokeWidth={1.4} />
-            <Server x="457" y="159" size={26} strokeWidth={1.4} />
+          <path className="scene-cloud-branches" d="M75 105V135M30 135H120M30 135V150M75 135V150M120 135V150" />
+          <g className="scene-cloud-resource resource-database">
+            <Database x="16" y="151" size={28} strokeWidth={1.45} />
           </g>
-          <rect className="scene-upload-packet" x="417" y="121" width="6" height="6" rx="1" />
+          <g className="scene-cloud-resource resource-container">
+            <Container x="61" y="151" size={28} strokeWidth={1.45} />
+          </g>
+          <g className="scene-cloud-resource resource-server">
+            <Server x="106" y="151" size={28} strokeWidth={1.45} />
+          </g>
+          <circle className="scene-upload-packet" cx="75" cy="132" r="4" />
         </g>
 
-        <g className="scene-devops">
-          <path className="scene-plinth" d="M592 194H788M606 200H774" />
-          <g className="scene-branch">
-            <GitBranch x="669" y="42" size={40} strokeWidth={1.4} />
-          </g>
-          <path className="scene-pipeline-track" d="M634 120H750M750 142V165H634V142" />
-          <path className="scene-pipeline-flow" d="M634 120H750" pathLength="100" />
+        <g className="scene-devops" transform="translate(730 72)">
+          <path className="scene-pipeline-track" d="M55 53H106M161 53H212" />
+          <path className="scene-pipeline-flow" d="M55 53H106M161 53H212" pathLength="100" />
           <g className="scene-pipeline-step step-code">
-            <rect className="scene-device" x="612" y="98" width="44" height="44" rx="6" />
-            <Terminal x="622" y="108" size={24} strokeWidth={1.5} />
+            <circle className="scene-step-shell" cx="28" cy="53" r="28" />
+            <Terminal x="14" y="39" size={28} strokeWidth={1.45} />
           </g>
           <g className="scene-pipeline-step step-build">
-            <rect className="scene-device" x="670" y="98" width="44" height="44" rx="6" />
-            <Container x="680" y="108" size={24} strokeWidth={1.5} />
+            <circle className="scene-step-shell" cx="134" cy="53" r="28" />
+            <Container x="120" y="39" size={28} strokeWidth={1.45} />
           </g>
           <g className="scene-pipeline-step step-deploy">
-            <rect className="scene-device" x="728" y="98" width="44" height="44" rx="6" />
-            <Check x="738" y="108" size={24} strokeWidth={1.8} />
+            <circle className="scene-step-shell" cx="240" cy="53" r="28" />
+            <Check x="226" y="39" size={28} strokeWidth={1.8} />
           </g>
+          <path className="scene-devops-loop" d="M28 92C28 134 240 134 240 92" />
         </g>
       </svg>
       <div className="opening-scene-labels" aria-hidden="true">
@@ -96,27 +123,19 @@ export default function OpeningAnimation({ language, onSkip }: { language: Langu
     >
       <div className="opening-shutter opening-shutter-left" aria-hidden="true" />
       <div className="opening-shutter opening-shutter-right" aria-hidden="true" />
-      <div className="opening-masthead" aria-hidden="true">
-        <span className="opening-signature">YH<span>.</span></span>
-        <span>Portfolio</span>
-      </div>
       <button ref={skipRef} className="opening-skip" type="button" onClick={onSkip} aria-label={t.skip}>
-        <ChevronsRight size={20} aria-hidden="true" />
+        <ChevronsRight size={18} aria-hidden="true" />
       </button>
 
       <div className="opening-inner" role="status" aria-label={t.announcement}>
-        <InfrastructureScenes label={t.scenes} disciplines={t.disciplines} />
-        <p className="opening-eyebrow">{t.eyebrow}</p>
+        <p className="opening-eyebrow"><i aria-hidden="true" />{t.eyebrow}</p>
         <strong className="opening-name" aria-label="Youness Herraka">
           <span className="opening-word" aria-hidden="true"><span>Youness</span></span>
           <span className="opening-word" aria-hidden="true"><span>Herraka</span></span>
         </strong>
+        <InfrastructureScenes label={t.scenes} disciplines={t.disciplines} />
       </div>
 
-      <div className="opening-baseline" aria-hidden="true">
-        <span>Youness Herraka</span>
-        <span>{t.location}</span>
-      </div>
       <div className="opening-timeline" aria-hidden="true"><span /></div>
     </div>
   );

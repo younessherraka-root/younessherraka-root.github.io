@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 
-const openingAnimationKey = 'portfolio-opening-animation-v4-played';
-export const openingAnimationDuration = 3600;
-export const openingRevealStart = 2900;
+const openingAnimationKey = 'portfolio-opening-animation-v5-played';
+export const openingAnimationDuration = 3400;
+export const openingRevealStart = 2720;
 
 function getPrefersReducedMotion() {
   return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;

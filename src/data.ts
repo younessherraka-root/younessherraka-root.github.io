@@ -60,8 +60,8 @@ export const translations = {
     },
     opening: {
       eyebrow: 'Digital infrastructure portfolio',
-      disciplines: ['IT', 'Cloud', 'DevOps'],
-      scenes: 'IT servers connected to cloud resources and a DevOps deployment pipeline',
+      disciplines: ['Infrastructure', 'Networking', 'Cloud', 'DevOps'],
+      scenes: 'Infrastructure and network services connected to cloud resources and a DevOps deployment pipeline',
       skip: 'Enter portfolio',
       replay: 'Replay introduction',
       announcement: 'Opening Youness Herraka portfolio',
@@ -168,8 +168,8 @@ export const translations = {
     },
     opening: {
       eyebrow: 'Portfolio infrastructure digitale',
-      disciplines: ['IT', 'Cloud', 'DevOps'],
-      scenes: 'Serveurs IT connectés aux ressources cloud et à un pipeline de déploiement DevOps',
+      disciplines: ['Infrastructure', 'Réseau', 'Cloud', 'DevOps'],
+      scenes: 'Infrastructure et services réseau connectés aux ressources cloud et à un pipeline de déploiement DevOps',
       skip: 'Accéder au portfolio',
       replay: "Revoir l'introduction",
       announcement: 'Ouverture du portfolio de Youness Herraka',
