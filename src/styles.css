@@ -145,7 +145,7 @@ body[data-intro-playing="true"]:not([data-intro-revealing="true"]) :is(.nav-pill
 }
 
 .nav-pill {
-  width: min(1260px, 100%);
+  width: min(1500px, 100%);
   margin: 0 auto;
   pointer-events: auto;
   display: flex;
