@@ -514,7 +514,7 @@ h3 {
 }
 
 .hero-content {
-  width: min(1180px, 100%);
+  width: min(1500px, 100%);
   min-height: 590px;
   margin: 0 auto;
   display: grid;
